@@ -8,6 +8,7 @@ import { logger } from './config/logger.js';
 import { query } from './db/pool.js';
 import { errorHandler, notFoundHandler } from './middleware/error.js';
 import authRoutes from './modules/auth/auth.routes.js';
+import adminRoutes from './modules/admin/admin.routes.js';
 
 export function createApp() {
   const app = express();
@@ -30,6 +31,7 @@ export function createApp() {
   });
 
   app.use('/api/auth', authRoutes);
+  app.use('/api/admin', adminRoutes);
 
   app.use(notFoundHandler);
   app.use(errorHandler);
